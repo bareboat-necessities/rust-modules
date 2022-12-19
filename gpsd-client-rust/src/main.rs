@@ -3,12 +3,11 @@ extern crate log;
 
 use futures::prelude::*;
 use gpsd_proto::UnifiedResponse;
-use futures::StreamExt;
 use tokio_util::codec::Framed;
 use tokio_util::codec::LinesCodec;
 use tokio::net::TcpStream;
 use std::error::Error;
-use std::net::{SocketAddr};
+use std::net::SocketAddr;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
