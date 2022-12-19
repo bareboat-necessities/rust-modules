@@ -11,30 +11,30 @@ fn main() {
     let num_samples = 1024;
 
     // Generate some test data
-    let mut data: Vec<Complex<f64>> = Vec::new();
+    let mut signal: Vec<Complex<f64>> = Vec::new();
     for i in 0..num_samples {
         let t = i as f64 / sample_rate as f64;
         let value = (2.0 * PI * t).sin() + 5.0 * (2.0 * PI * 10.0 * t).sin();
-        data.push(Complex::new(value, 0.0));
+        signal.push(Complex::new(value, 0.0));
     }
-    let main_freq = main_freq(sample_rate, &mut data);
+    let main_freq = main_freq(sample_rate, &mut signal);
     println!("Main frequency: {} Hz", main_freq);
 }
 
-fn main_freq(sample_rate_hz: i32, mut data: &mut Vec<Complex<f64>>) -> f64 {
+fn main_freq(sample_rate_hz: i32, mut signal: &mut Vec<Complex<f64>>) -> f64 {
     // Create an FFT planner
     let mut planner = FftPlanner::new();
 
     // Plan an FFT of the data
-    let fft = planner.plan_fft_forward(data.len());
+    let fft = planner.plan_fft_forward(signal.len());
 
     // Perform the FFT in-place
-    fft.process(&mut data);
+    fft.process(&mut signal);
 
     // Find the main frequency
     let mut main_freq = 0;
     let mut main_power = 0.0;
-    for (i, sample) in data.iter().enumerate() {
+    for (i, sample) in signal.iter().enumerate() {
         let power = sample.re * sample.re + sample.im * sample.im;
         if power > main_power {
             main_freq = i;
@@ -43,6 +43,6 @@ fn main_freq(sample_rate_hz: i32, mut data: &mut Vec<Complex<f64>>) -> f64 {
     }
 
     // Convert the main frequency to Hz
-    let main_freq = main_freq as f64 * sample_rate_hz as f64 / data.len() as f64;
+    let main_freq = main_freq as f64 * sample_rate_hz as f64 / signal.len() as f64;
     main_freq
 }
