@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let mut framed = Framed::new(conn, LinesCodec::new_with_max_length(64 * 1024));
     framed.send(gpsd_proto::ENABLE_WATCH_CMD.to_string()).await?;
     while let Some(Ok(line)) = framed.next().await {
-        println!("{}", line);
+        //println!("{}", line);
         match serde_json::from_str(line.as_str()) {
             Ok(rd) => match rd {
                 UnifiedResponse::Version(v) => {
@@ -29,11 +29,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 }
                 UnifiedResponse::Devices(_) => {}
                 UnifiedResponse::Watch(_) => {}
-                UnifiedResponse::Device(d) => info!("Device {:?}", d),
-                UnifiedResponse::Tpv(t) => info!("Tpv {:?}", t),
-                UnifiedResponse::Sky(s) => info!("Sky {:?}", s),
-                UnifiedResponse::Pps(p) => info!("PPS {:?}", p),
-                UnifiedResponse::Gst(g) => info!("GST {:?}", g),
+                UnifiedResponse::Device(d) => println!("Device {:?}", d),
+                UnifiedResponse::Tpv(t) => println!("Tpv {:?}", t),
+                UnifiedResponse::Sky(s) => println!("Sky {:?}", s),
+                UnifiedResponse::Pps(p) => println!("PPS {:?}", p),
+                UnifiedResponse::Gst(g) => println!("GST {:?}", g),
             },
             Err(e) => {
                 error!("Error decoding: {}", e);
