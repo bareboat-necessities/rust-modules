@@ -13,7 +13,7 @@ fn main() {
     let mut signal: Vec<Complex<f64>> = Vec::new();
     for i in 0..num_samples {
         let t = i as f64 / sample_rate as f64;
-        let value = (2.0 * PI * t).sin() + 5.0 * (2.0 * PI * 10.0 * t).sin();
+        let value = 5.0 * (2.0 * PI * t).sin() + (2.0 * PI * 10.0 * t).sin();
         signal.push(Complex::new(value, 0.0));
     }
     let main_freq = main_freq(sample_rate, &mut signal);
