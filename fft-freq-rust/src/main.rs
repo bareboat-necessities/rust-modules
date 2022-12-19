@@ -32,12 +32,12 @@ fn main_freq(sample_rate_hz: i32, mut signal: &mut Vec<Complex<f64>>) -> f64 {
 
     // Find the main frequency
     let mut main_freq = 0;
-    let mut main_power = 0.0;
+    let mut main_magnitude = 0.0;
     for (i, sample) in signal.iter().enumerate() {
-        let power = sample.re * sample.re + sample.im * sample.im;
-        if power > main_power {
+        let magnitude = sample.re * sample.re + sample.im * sample.im;
+        if magnitude > main_magnitude {
             main_freq = i;
-            main_power = power;
+            main_magnitude = magnitude;
         }
     }
 
