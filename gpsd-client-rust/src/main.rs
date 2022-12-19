@@ -28,11 +28,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 }
                 UnifiedResponse::Devices(_) => {}
                 UnifiedResponse::Watch(_) => {}
-                UnifiedResponse::Device(d) => debug!("Device {:?}", d),
-                UnifiedResponse::Tpv(t) => debug!("Tpv {:?}", t),
-                UnifiedResponse::Sky(s) => debug!("Sky {:?}", s),
-                UnifiedResponse::Pps(p) => debug!("PPS {:?}", p),
-                UnifiedResponse::Gst(g) => debug!("GST {:?}", g),
+                UnifiedResponse::Device(d) => info!("Device {:?}", d),
+                UnifiedResponse::Tpv(t) => info!("Tpv {:?}", t),
+                UnifiedResponse::Sky(s) => info!("Sky {:?}", s),
+                UnifiedResponse::Pps(p) => info!("PPS {:?}", p),
+                UnifiedResponse::Gst(g) => info!("GST {:?}", g),
             },
             Err(e) => {
                 error!("Error decoding: {}", e);
