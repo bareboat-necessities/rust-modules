@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let mut framed = Framed::new(conn, LinesCodec::new_with_max_length(64 * 1024));
     framed.send(gpsd_proto::ENABLE_WATCH_CMD.to_string()).await?;
     while let Some(Ok(line)) = framed.next().await {
-        println!(line);
+        println!("{}", line);
         match serde_json::from_str(line.as_str()) {
             Ok(rd) => match rd {
                 UnifiedResponse::Version(v) => {
