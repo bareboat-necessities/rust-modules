@@ -12,8 +12,8 @@ use std::net::{SocketAddr};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let saddr: SocketAddr = "127.0.0.1:2947".parse().unwrap();
-    let conn = TcpStream::connect(saddr).await?;
+    let addr: SocketAddr = "127.0.0.1:2947".parse().unwrap();
+    let conn = TcpStream::connect(addr).await?;
 
     let mut framed = Framed::new(conn, LinesCodec::new_with_max_length(64 * 1024));
     framed.send(gpsd_proto::ENABLE_WATCH_CMD.to_string()).await?;
