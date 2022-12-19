@@ -1,4 +1,3 @@
-extern crate num;
 extern crate rustfft;
 
 use rustfft::{FftPlanner, num_complex::Complex};
