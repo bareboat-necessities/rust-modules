@@ -1,6 +1,6 @@
 # Rust bindings for RTIMULib2
 
-Rust bindings for RTIMULib2
+Rust bindings for RTIMULib2 generated with https://rust-lang.github.io/rust-bindgen/
 
 
 ## Steps to generate bindings:
