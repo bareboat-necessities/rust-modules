@@ -5,6 +5,13 @@ Rust bindings for RTIMULib2
 
 ## Steps to generate bindings:
 
+
+* On Debian
+
+````
+sudo apt install llvm-dev libclang-dev clang
+````
+
 * clone and build RTIMULib2
 
 ````
