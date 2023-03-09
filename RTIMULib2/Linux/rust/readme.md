@@ -7,16 +7,36 @@ Rust bindings for RTIMULib2
 
 * clone and build RTIMULib2
 
-
+````
+cd ~
+git clone https://github.com/seandepagnier/RTIMULib2
+cd RTIMULib2/RTIMULib
+mkdir build && cd build 
+cmake ..
+make
+````
 
 * put content of this directory under RTIMULib2/Linux/rust/
 
-
+````
+cd ~
+git clone https://github.com/bareboat-necessities/rust-modules
+cp -r rust-modules/RTIMULib2/Linux/rust ~/RTIMULib2/Linux/
+````
 
 * cargo build
 
 
+````
+cd ~/RTIMULib2/Linux/rust
+cargo build
+````
+
 
 * cargo test
 
+````
+cd ~/RTIMULib2/Linux/rust
+cargo test
+````
 
