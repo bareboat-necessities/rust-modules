@@ -1,0 +1,8 @@
+[package]
+authors = ["mgrouch <mgrouch@users.github.com>"]
+build = "build.rs"
+name = "rtimulib-rust"
+version = "0.1.0"
+
+[build-dependencies]
+bindgen = "*"
