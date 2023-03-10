@@ -5,7 +5,5 @@ edition = "2021"
 description = "RTIMULib2 example"
 homepage = "https://github.com/bareboat-necessities/rust-modules/tree/main/RTIMULib2/Linux/rust"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-rtimulib-rust = "0.1.0"
+rtimulib-rust = "0.2.0"
