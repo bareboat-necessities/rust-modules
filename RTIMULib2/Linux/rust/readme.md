@@ -51,7 +51,7 @@ cargo test
 
 ## Rust Code
 
-The Rust equivalent for the following C++ code
+The Rust code example:
 
 
 ````
