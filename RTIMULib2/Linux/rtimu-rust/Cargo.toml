@@ -6,4 +6,4 @@ description = "RTIMULib2 example"
 homepage = "https://github.com/bareboat-necessities/rust-modules/tree/main/RTIMULib2/Linux/rust"
 
 [dependencies]
-rtimulib-rust = "0.2.0"
+rtimulib-rust = "0.2.1"
