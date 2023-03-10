@@ -37,6 +37,7 @@ cp -r rust-modules/RTIMULib2/Linux/rust ~/RTIMULib2/Linux/
 ````
 cd ~/RTIMULib2/Linux/rust
 cargo build
+find . -name bindings.rs
 ````
 
 
