@@ -3,6 +3,10 @@ authors = ["mgrouch <mgrouch@users.github.com>"]
 build = "build.rs"
 name = "rtimulib-rust"
 version = "0.1.0"
+description = "RTIMULib2 bindings"
+homepage = "https://github.com/bareboat-necessities/rust-modules/tree/main/RTIMULib2/Linux/rust"
+license = "MIT"
+
 
 [build-dependencies]
 bindgen = "*"
