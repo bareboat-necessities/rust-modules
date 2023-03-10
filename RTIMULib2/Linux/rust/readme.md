@@ -59,7 +59,7 @@ use std::ffi::{CStr};
 use std::mem::MaybeUninit;
 use std::os::raw::{c_void};
 use std::{ptr, thread, time};
-use rtimulib_rust::{RTIMUSettings, RTIMU, RTIMUSettings_RTIMUSettings, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMUGetPollInterval, RTMath_displayDegrees, RTVector3, RTIMUMPU925x_IMURead};
+use rtimulib_rust::{RTIMUSettings, RTIMU, RTIMUSettings_RTIMUSettings, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMUGetPollInterval, RTMath_displayDegrees, RTVector3, RTIMUMPU925x_IMURead, RTIMUSettings_setDefaults, RTIMUMPU925x_RTIMUMPU925x_destructor, RTIMUMPU925x, RTFusionKalman4_RTFusionKalman4_destructor, RTFusionKalman4};
 
 fn main() {
     println!("Hello RTIMULib!");
@@ -68,6 +68,7 @@ fn main() {
     let settings = instance.as_mut_ptr();
     unsafe {
         RTIMUSettings_RTIMUSettings( settings, "RTIMULib".as_ptr());
+        (*settings).m_fusionType = 1;
         let imu = RTIMU::createIMU(settings);
         RTIMUMPU925x_IMUInit(imu as *mut c_void);
 
@@ -88,8 +89,12 @@ fn main() {
 
         let deg = RTMath_displayDegrees("".as_ptr(), p_pose);
         println!("{}", CStr::from_ptr(deg).to_str().unwrap().to_owned());
+
+        RTFusionKalman4_RTFusionKalman4_destructor(fusion as *mut RTFusionKalman4);
+        RTIMUMPU925x_RTIMUMPU925x_destructor( imu as *mut RTIMUMPU925x);
     }
 }
+
 
 ````
 
