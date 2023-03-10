@@ -55,7 +55,6 @@ The Rust code example:
 
 
 ````
-
 use std::{ptr, thread, time};
 use std::ffi::CStr;
 use std::mem::MaybeUninit;
@@ -69,7 +68,7 @@ fn main() {
     let mut instance = MaybeUninit::<RTIMUSettings>::uninit();
     let settings = instance.as_mut_ptr();
     unsafe {
-        RTIMUSettings_RTIMUSettings(settings, "RTIMULib".as_ptr());
+        RTIMUSettings_RTIMUSettings(settings,"\0".as_ptr());
         (*settings).m_fusionType = 1;
         let imu = RTIMU::createIMU(settings);
         RTIMUMPU925x_IMUInit(imu as *mut _);
