@@ -56,10 +56,12 @@ The Rust code example:
 
 ````
 
-use std::ffi::{CStr};
-use std::mem::MaybeUninit;
 use std::{ptr, thread, time};
-use rtimulib_rust::{RTIMUSettings, RTIMU, RTIMUSettings_RTIMUSettings, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMUGetPollInterval, RTMath_displayDegrees, RTIMUMPU925x_IMURead, RTIMUMPU925x_RTIMUMPU925x_destructor, RTFusionKalman4_RTFusionKalman4_destructor};
+use std::ffi::CStr;
+use std::mem::MaybeUninit;
+use time::Duration;
+
+use rtimulib_rust::{RTFusionKalman4_RTFusionKalman4_destructor, RTIMU, RTIMUMPU925x_IMUGetPollInterval, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMURead, RTIMUMPU925x_RTIMUMPU925x_destructor, RTIMUSettings, RTIMUSettings_RTIMUSettings, RTMath_displayDegrees};
 
 fn main() {
     println!("Hello RTIMULib!");
@@ -81,13 +83,13 @@ fn main() {
         let poll = RTIMUMPU925x_IMUGetPollInterval(imu as *mut _);
         println!("Poll: {}", poll);
 
-        thread::sleep(time::Duration::from_millis((poll * 1000) as u64));
+        thread::sleep(Duration::from_millis((poll * 1000) as _));
 
         RTIMUMPU925x_IMURead(imu as *mut _);
         let mut imu_data = (*imu).m_imuData;
         let p_pose = ptr::addr_of_mut!(imu_data.fusionPose);
 
-        let deg = RTMath_displayDegrees("".as_ptr(), p_pose);
+        let deg = RTMath_displayDegrees("Deg\0".as_ptr(), p_pose);
         println!("{}", CStr::from_ptr(deg).to_str().unwrap().to_owned());
 
         RTFusionKalman4_RTFusionKalman4_destructor(fusion as *mut _);
