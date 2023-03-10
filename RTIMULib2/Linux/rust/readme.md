@@ -55,11 +55,12 @@ The Rust code example:
 
 
 ````
+
 use std::ffi::{CStr};
 use std::mem::MaybeUninit;
 use std::os::raw::{c_void};
 use std::{ptr, thread, time};
-use rtimulib_rust::{RTIMUSettings, RTIMU, RTIMUSettings_RTIMUSettings, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMUGetPollInterval, RTMath_displayDegrees, RTVector3, RTIMUMPU925x_IMURead, RTIMUSettings_setDefaults, RTIMUMPU925x_RTIMUMPU925x_destructor, RTIMUMPU925x, RTFusionKalman4_RTFusionKalman4_destructor, RTFusionKalman4};
+use rtimulib_rust::{RTIMUSettings, RTIMU, RTIMUSettings_RTIMUSettings, RTIMUMPU925x_IMUInit, RTIMUMPU925x_IMUGetPollInterval, RTMath_displayDegrees, RTVector3, RTIMUMPU925x_IMURead, RTIMUMPU925x_RTIMUMPU925x_destructor, RTIMUMPU925x, RTFusionKalman4_RTFusionKalman4_destructor, RTFusionKalman4};
 
 fn main() {
     println!("Hello RTIMULib!");
@@ -94,7 +95,6 @@ fn main() {
         RTIMUMPU925x_RTIMUMPU925x_destructor( imu as *mut RTIMUMPU925x);
     }
 }
-
 
 ````
 
