@@ -1,0 +1,12 @@
+[package]
+name = "lightning-detect"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+as3935-bbn = "0.1.0-pre.2"
+notify-rust = "4"
+rppal = "0.14.1"
+chrono = "0.4.7"
+simple-signal = "1.1.1"
+simple_logger = "4.0.0"
