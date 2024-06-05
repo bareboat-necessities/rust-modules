@@ -1,11 +1,10 @@
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let body = reqwest::get("https://i2cdevices.org/devices.json")
+    let resp = reqwest::get("https://i2cdevices.org/devices.json")
         .await?
-        .text()
+        .json::<serde_json::Value>()
         .await?;
-
-    println!("body = {body:?}");
+    println!("{:#?}", resp);
     Ok(())
 }
