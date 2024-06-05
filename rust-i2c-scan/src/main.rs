@@ -26,7 +26,7 @@ fn lookup(addr: u8) {
         let addresses = I2C_SCANNER_KNOWN_DEVICES[i].2;
         for j in 0 .. addresses.len() {
             if addr == addresses[j] {
-                println!("  {}  {}", I2C_SCANNER_KNOWN_DEVICES[i].0, I2C_SCANNER_KNOWN_DEVICES[i].1);
+                println!("  {}:  {}", I2C_SCANNER_KNOWN_DEVICES[i].0, I2C_SCANNER_KNOWN_DEVICES[i].1);
             }
         }
     }
