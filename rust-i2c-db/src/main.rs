@@ -25,9 +25,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             print!("    ({}, {}, &[", entry["part_number"], entry["friendly_name"]);
             for addr in entry["addresses"].as_array().unwrap().iter().with_position() {
                 if let itertools::Position::Last | itertools::Position::Only = addr.0  {
-                    print!("{}", addr.1);
+                    print!("{:#02x}", addr.1.as_u64().unwrap());
                 } else {
-                    print!("{}, ", addr.1);
+                    print!("{:#02x}, ", addr.1.as_u64().unwrap());
                 }
             }
             println!("]),");
