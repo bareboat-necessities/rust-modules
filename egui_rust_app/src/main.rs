@@ -3,7 +3,7 @@
 
 // When compiling natively:
 #[cfg(not(target_arch = "wasm32"))]
-fn main() -> egui_rust_app::Result<()> {
+fn main() -> eframe::Result<()> {
     env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
 
     let native_options = eframe::NativeOptions {
@@ -18,9 +18,9 @@ fn main() -> egui_rust_app::Result<()> {
         ..Default::default()
     };
     eframe::run_native(
-        "eframe template",
+        "egui_rust_app",
         native_options,
-        Box::new(|cc| Box::new(eframe_template::TemplateApp::new(cc))),
+        Box::new(|cc| Box::new(egui_rust_app::TemplateApp::new(cc))),
     )
 }
 
@@ -37,7 +37,7 @@ fn main() {
             .start(
                 "the_canvas_id", // hardcode it
                 web_options,
-                Box::new(|cc| Box::new(eframe_template::TemplateApp::new(cc))),
+                Box::new(|cc| Box::new(egui_rust_app::TemplateApp::new(cc))),
             )
             .await
             .expect("failed to start eframe");
